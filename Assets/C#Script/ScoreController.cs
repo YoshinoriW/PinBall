@@ -8,10 +8,6 @@ public class ScoreController : MonoBehaviour {
     private int score = 0;
     //得点を表示するテキスト
     private GameObject scoreText;
-    //角度
-    private int degree = 0;
-    //速度
-    private int speed = 10;
 
 	// Use this for initialization
 	void Start () {
@@ -24,18 +20,12 @@ public class ScoreController : MonoBehaviour {
 	void Update () {
 
         //衝突した場合scoreTextに得点を表示
-        if (this.degree >= 0){
             this.scoreText.GetComponent<Text>().text = "得点 :" + score;
 
-            //現在の角度を小さくする
-            this.degree -= this.speed;
         }
-    }
+    
 
     void OnCollisionEnter(Collision other){
-
-        //角度を180に設定
-        this.degree = 180;
 
         //タグによって得点を変える
         if (other.gameObject.tag == "SmallStarTag"){
